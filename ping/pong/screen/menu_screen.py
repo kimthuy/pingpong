@@ -16,11 +16,6 @@ class MenuScreen:
         self.status = True
 
     def init_screen(self):
-        self.font = {
-            18: pygame.font.SysFont("Times New Roman",18),
-            72: pygame.font.SysFont("Times New Roman",72)
-        }
-
-
+        pass
     def play(self):
         pass

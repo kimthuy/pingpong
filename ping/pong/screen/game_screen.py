@@ -18,9 +18,8 @@ class ScreenGame(BaseScreen):
         self.icon.set_alpha(0)
         self.balls = []
         self.screen_size = screen_size
-        self.stop = True
+        self.stop = False
         pygame.display.set_icon(self.icon)
-        )
 
     def init_screen(self):
         self.sounds = {
@@ -61,7 +60,7 @@ class ScreenGame(BaseScreen):
     def play(self):
         clock = pygame.time.Clock()
         while True:
-            if not self.get_input() or not self.status:
+            if not self.get_input() or  self.stop:
                 break
             self.update()
             self.move()
