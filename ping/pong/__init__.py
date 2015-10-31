@@ -10,6 +10,7 @@ from ping.pong.screen.game_screen import *
 from ping.pong.screen.menu_screen import *
 
 class Pong:
+    _SCREENS = {}
     def __init__(self):
         pygame.display.init()
         pygame.font.init()
@@ -18,5 +19,6 @@ class Pong:
         self.surface = pygame.display.set_mode(self.screen_size)
         pygame.display.set_caption("Ping Pang Pong - v.3.0.0 - Ian Mallett - 2012")
         game_screen = ScreenGame(self.screen_size, self.surface)
-        game_screen.init_screen()
-        game_screen.play()
+        self._SCREENS['game'] = game_screen
+        menu_screen = MenuScreen(self.screen_size, self.surface)
+        menu_screen.start_screen()
