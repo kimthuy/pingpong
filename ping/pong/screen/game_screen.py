@@ -9,9 +9,12 @@ from ping.pong.util import Utils
 from ping.pong.screen.base_screen import *
 from ping.pong.util.setting import *
 __all__ = ['ScreenGame']
+
+
 class ScreenGame(BaseScreen):
 
     def __init__(self, screen_size, surface):
+        # BaseScreen.__init__(self)
         self.surface = surface
         self.dt = 1.0/60.0
         self.icon = pygame.Surface((1, 1))
@@ -20,7 +23,6 @@ class ScreenGame(BaseScreen):
         self.screen_size = screen_size
         self.stop = True
         pygame.display.set_icon(self.icon)
-        )
 
     def init_screen(self):
         self.sounds = {
@@ -90,9 +92,18 @@ class ScreenGame(BaseScreen):
             ball.update()
 
     def ai_move(self):
-        if self.balls:
+        move_speed = 5
+        if self.balls and self.balls[0].speed[0] < 0:
             for paddle in self.players[0].paddles:
-                paddle.pos[1] = self.balls[0].pos[1] - paddle.dim[1]/2
+                if abs(paddle.pos[1]-self.balls[0].pos[1]) > 50:
+                    if paddle.pos[1] > self.balls[0].pos[1]:
+                        paddle.pos[1] -= move_speed
+                    else:
+                        paddle.pos[1] += move_speed
+                else:
+                    paddle.pos[1] = self.balls[0].pos[1] - paddle.dim[1]/2
+                # paddle.pos[1] += 5
+            paddle.pos[1] = Utils.clamp(paddle.pos[1], 0, self.screen_size[1] - paddle.dim[1])
 
     def move(self):
         balls2 = []

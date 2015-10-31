@@ -16,7 +16,7 @@ class Pong:
         pygame.mixer.init(buffer=0)
         self.screen_size = [800,500]
         self.surface = pygame.display.set_mode(self.screen_size)
-        pygame.display.set_caption("Ping Pang Pong - v.3.0.0 - Ian Mallett - 2012"
+        pygame.display.set_caption("Ping Pang Pong - v.3.0.0 - Ian Mallett - 2012")
         game_screen = ScreenGame(self.screen_size, self.surface)
-        game_screen.init_screen_game()
+        game_screen.init_screen()
         game_screen.play()
