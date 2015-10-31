@@ -76,7 +76,7 @@ class Pong:
             self.dt = 1.0/Utils.clamp(clock.get_fps(), 30, 90)
 
         pygame.quit()
-        sys.exit()
+        # sys.exit()
 
     def get_input(self):
         keys = pygame.key.get_pressed()
@@ -94,9 +94,19 @@ class Pong:
             ball.update()
 
     def ai_move(self):
-        if self.balls:
+        move_speed = 5
+        if self.balls and self.balls[0].speed[0] < 0:
             for paddle in self.players[0].paddles:
-                paddle.pos[1] = self.balls[0].pos[1] - paddle.dim[1]/2
+                if abs(paddle.pos[1]-self.balls[0].pos[1]) > 50:
+                    if paddle.pos[1] > self.balls[0].pos[1]:
+                        paddle.pos[1] -= move_speed
+                    else:
+                        paddle.pos[1] += move_speed
+                else:
+                    paddle.pos[1] = self.balls[0].pos[1] - paddle.dim[1]/2
+                # paddle.pos[1] += 5
+            paddle.pos[1] = Utils.clamp(paddle.pos[1], 0, self.screen_size[1] - paddle.dim[1])
+
 
     def move(self):
         balls2 = []

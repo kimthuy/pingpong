@@ -9,6 +9,7 @@ class Ball:
     _COLOR = (255, 255, 255)
     _SIZE = 8
     _LIGHT = 255/10
+    # speed_increase = [0, 0]
 
     def __init__(self, x, y, speed, surface):
         self.pos = [x,y]
@@ -19,6 +20,7 @@ class Ball:
         while abs(cos(angle)) < 0.1 or abs(cos(angle)) > 0.9:
             angle = radians(random.randint(0, 360))
         self.speed = [speed*cos(angle), speed*sin(angle)]
+        # self.speed_increase = [self.speed[0]*0.2, self.speed[1]*0.2]
 
         self.radius = self._SIZE
 
@@ -34,15 +36,17 @@ class Ball:
         factor = 1.1
         self.speed[0] *= factor
         self.speed[1] *= factor
+        # self.speed[0] += self.speed_increase[0]
+        # self.speed[1] += self.speed_increase[1]
 
     def draw(self):
-        light = self._LIGHT
-        for px, py, r in self.trail[::-1]:
-            pygame.draw.circle(self.surface,
-                               (light,0,0),
-                               list(map(Utils.round_int,[px,py])),
-                               r)
-            light += self._LIGHT
+        # light = self._LIGHT
+        # for px, py, r in self.trail[::-1]:
+        #     pygame.draw.circle(self.surface,
+        #                        (light,0,0),
+        #                        list(map(Utils.round_int,[px,py])),
+        #                        r)
+        #     light += self._LIGHT
         pygame.draw.circle(self.surface,
                            self._COLOR,
                            list(map(Utils.round_int, self.pos)),
