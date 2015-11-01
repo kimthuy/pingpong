@@ -14,7 +14,7 @@ class Pong:
         pygame.display.init()
         pygame.font.init()
         pygame.mixer.init(buffer=0)
-        self.screen_size = [800,491]
+        self.screen_size = [800,500]
         self.surface = pygame.display.set_mode(self.screen_size)
 
         lifeimg = pygame.image.load("../media/image/icon.png").convert_alpha()

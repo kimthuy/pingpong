@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4faadeb7-4fe2-4c7b-bb69-5f32d18c6269" name="Default" comment="Merge branch 'master' of github.com:kimthuy/pingpong&#10;&#10;# Conflicts:&#10;#&#9;ping/pong/__init__.py&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/font/FEASFBI.TTF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/font/FEASFBRG.TTF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/image/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/image/menu-bg.PNG" />
+    <list default="true" id="4faadeb7-4fe2-4c7b-bb69-5f32d18c6269" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/media/image/menu-bg.PNG" afterPath="$PROJECT_DIR$/media/image/menu-bg.PNG" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ping/pong/__init__.py" afterPath="$PROJECT_DIR$/ping/pong/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ping/pong/screen/game_screen.py" afterPath="$PROJECT_DIR$/ping/pong/screen/game_screen.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ping/pong/object/menu.py" afterPath="$PROJECT_DIR$/ping/pong/object/menu.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ping/pong/screen/menu_screen.py" afterPath="$PROJECT_DIR$/ping/pong/screen/menu_screen.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ping/pong/object/player.py" afterPath="$PROJECT_DIR$/ping/pong/object/player.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pingpong.iws" />
@@ -36,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/ping/pong/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-4.2413793">
-              <caret line="16" column="36" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="36" />
+              <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -47,8 +42,8 @@
       <file leaf-file-name="game_screen.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ping/pong/screen/game_screen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.724138">
-              <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+            <state vertical-scroll-proportion="-9.206897">
+              <caret line="30" column="44" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="44" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -69,8 +64,8 @@
       <file leaf-file-name="menu_screen.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ping/pong/screen/menu_screen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38565022">
-              <caret line="97" column="39" selection-start-line="97" selection-start-column="39" selection-end-line="97" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.6950673">
+              <caret line="117" column="60" selection-start-line="117" selection-start-column="60" selection-end-line="117" selection-end-column="60" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -91,7 +86,7 @@
       <file leaf-file-name="paddle.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ping/pong/object/paddle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.6551723">
+            <state vertical-scroll-proportion="-18.172413">
               <caret line="31" column="41" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="41" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -121,10 +116,10 @@
         <option value="$PROJECT_DIR$/ping/pong/object/ball.py" />
         <option value="$PROJECT_DIR$/ping/pong/screen/base_screen.py" />
         <option value="$PROJECT_DIR$/ping/pong/object/player.py" />
-        <option value="$PROJECT_DIR$/ping/pong/__init__.py" />
         <option value="$PROJECT_DIR$/ping/pong/object/paddle.py" />
         <option value="$PROJECT_DIR$/ping/pong/object/menu.py" />
         <option value="$PROJECT_DIR$/ping/pong/screen/game_screen.py" />
+        <option value="$PROJECT_DIR$/ping/pong/__init__.py" />
         <option value="$PROJECT_DIR$/ping/pong/screen/menu_screen.py" />
       </list>
     </option>
@@ -582,7 +577,13 @@
       <option name="project" value="LOCAL" />
       <updated>1446285271861</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="menu screen">
+      <created>1446336636270</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1446336636270</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -645,7 +646,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add ai play" />
     <MESSAGE value="Merge branch 'master' of github.com:kimthuy/pingpong&#10;&#10;# Conflicts:&#10;#&#9;ping/pong/__init__.py&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of github.com:kimthuy/pingpong&#10;&#10;# Conflicts:&#10;#&#9;ping/pong/__init__.py&#10;" />
+    <MESSAGE value="menu screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="menu screen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -707,29 +709,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ping/pong/object/player.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ping/pong/screen/base_screen.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17894737">
           <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ping/pong/object/paddle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.6551723">
-          <caret line="31" column="41" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -773,20 +757,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ping/pong/__init__.py">
+    <entry file="file://$PROJECT_DIR$/ping/pong/object/paddle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.2413793">
-          <caret line="16" column="36" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="36" />
+        <state vertical-scroll-proportion="-18.172413">
+          <caret line="31" column="41" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="41" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ping/pong/object/player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ping/pong/screen/game_screen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.724138">
-          <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+        <state vertical-scroll-proportion="-9.206897">
+          <caret line="30" column="44" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ping/pong/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.2413793">
+          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -795,8 +797,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ping/pong/screen/menu_screen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38565022">
-          <caret line="97" column="39" selection-start-line="97" selection-start-column="39" selection-end-line="97" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.6950673">
+          <caret line="117" column="60" selection-start-line="117" selection-start-column="60" selection-end-line="117" selection-end-column="60" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

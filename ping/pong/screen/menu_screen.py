@@ -26,9 +26,14 @@ class MenuScreen:
         menu_exit = Menu(self.surface, "Exit", 35, 580, 230)
 
         self.menus = [menu_text, menu_start, menu_setting, menu_exit]
+        self.sounds = {
+            "theme": pygame.mixer.Sound("../media/sound/menu-screen-theme.wav")
+        }
+        self.sounds["theme"].set_volume(0.5)
 
     def start_screen(self):
         clock = pygame.time.Clock()
+        self.sounds["theme"].play(-1)
         while True:
             if not self.get_input():
                 break
@@ -106,9 +111,10 @@ class MenuScreen:
                     i = 0;
                     for menu in self.menus:
                         if menu._IS_SELECTED == 1 and i == 1:
+                            self.sounds["theme"].stop()
                             game_screen = ScreenGame([800, 500], self.surface)
                             game_screen.init_screen()
                             game_screen.play()
-                            #return False
+                        if menu._IS_SELECTED == 1 and i == 3: return False
                         i += 1;
         return True

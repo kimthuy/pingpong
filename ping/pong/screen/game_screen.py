@@ -24,7 +24,7 @@ class ScreenGame(BaseScreen):
     def init_screen(self):
         self.sounds = {
             "ping" : pygame.mixer.Sound("../media/sound/ping.wav"),
-            "click" : pygame.mixer.Sound("../media/sound/paddle-hit.mp3"),
+            "click" : pygame.mixer.Sound("../media/sound/paddle-hit.wav"),
             "da-ding" : pygame.mixer.Sound("../media/sound/da-ding.wav")
         }
         self.sounds["ping"].set_volume(0.05)
