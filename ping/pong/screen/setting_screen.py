@@ -114,9 +114,9 @@ class SettingScreen:
                     i = 0
                     for menu in self.menus:
                         if menu.is_selected == Menu.SELECT and i == 1:
-                            Setting._PLAY_MODE = Setting._SINGLE_MODE
+                            Setting.PLAY_MODE = Setting.SINGLE_MODE
                         if menu.is_selected == Menu.SELECT and i == 2:
-                            Setting._PLAY_MODE = Setting._MULTI_MODE
+                            Setting.PLAY_MODE = Setting.MULTI_MODE
                         self.sounds["theme"].stop()
                         i += 1
                     self.base_game.switch_screen(Setting.MENU_SCREEN)
