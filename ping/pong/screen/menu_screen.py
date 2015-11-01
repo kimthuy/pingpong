@@ -2,23 +2,25 @@ import pygame
 import os
 import sys
 from pygame.locals import *
+from ping.pong.util.setting import Setting
 from ping.pong.object.menu import Menu
 from ping.pong.screen.game_screen import ScreenGame
-from ping.pong.screen.setting_screen import SettingScreen
+
 from ping.pong.util import Utils
 
-
 __all__ = ['MenuScreen']
+
+
 class MenuScreen:
 
-    def __init__(self, surface):
+    def __init__(self, base_game, surface):
+        self.base_game = base_game
         self.status =False
         self.surface = surface
         self.font = {
             35: pygame.font.Font("../font/FEASFBI.TTF", 35),
             70: pygame.font.Font("../font/FEASFBI.TTF", 70)
         }
-        self.dt = 1.0/60.0
         self.bg = pygame.image.load("../media/image/menu-bg.png")
 
         menu_text = Menu(self.surface, "Menu", 70, 550, 60)
@@ -42,8 +44,6 @@ class MenuScreen:
             if not self.get_input():
                 break
             self.init_screen()
-            clock.tick(60)
-            self.dt = 1.0/Utils.clamp(clock.get_fps(), 30, 90)
             pygame.display.update()
         pygame.quit()
         sys.exit()
@@ -123,8 +123,9 @@ class MenuScreen:
                             game_screen.play()
                         if menu._IS_SELECTED == 1 and i == 2:
                             self.sounds["theme"].stop()
-                            setting_screen = SettingScreen(self.surface)
-                            setting_screen.start_screen()
+                            # setting_screen = SettingScreen(self.surface)
+                            # setting_screen.start_screen()
+                            self.base_game.switch_screen(Setting.SETTING_SCREEN)
                         elif menu._IS_SELECTED == 1 and i == 3: return False
                         i += 1;
         return True

@@ -5,11 +5,18 @@ from ping.pong.object.player import Player
 from ping.pong.object.paddle import Paddle
 from ping.pong.object.ball import Ball
 from ping.pong.util import Utils
-from ping.pong.screen.base_screen import *
-from ping.pong.screen.game_screen import *
-from ping.pong.screen.menu_screen import *
+from ping.pong.util.setting import Setting
+from ping.pong.screen.base_screen import BaseScreen
+from ping.pong.screen.game_screen import ScreenGame
+from ping.pong.screen.menu_screen import MenuScreen
+from ping.pong.screen.setting_screen import SettingScreen
 
 class Pong:
+
+    menu_screen = None
+    setting_screen = None
+    game_screen = None
+
     def __init__(self):
         pygame.display.init()
         pygame.font.init()
@@ -22,9 +29,21 @@ class Pong:
         pygame.display.set_caption("Ping Pong")
         pygame.display.set_icon(lifeimg)
 
-        menu_screen = MenuScreen(self.surface)
-        menu_screen.start_screen()
+        self.menu_screen = MenuScreen(self, self.surface)
+        self.setting_screen = SettingScreen(self, self.surface)
+        self.game_screen = ScreenGame(self, self.surface)
+
+        self.switch_screen(Setting.MENU_SCREEN)
+
 
         #game_screen = ScreenGame(self.screen_size, self.surface)
         #game_screen.init_screen()
         #game_screen.play()
+
+    def switch_screen(self, screen_index):
+        if screen_index == Setting.MENU_SCREEN:
+            self.menu_screen.start_screen()
+        elif screen_index == Setting.SETTING_SCREEN:
+            self.setting_screen.start_screen()
+        elif screen_index == Setting.GAME_SCREEN:
+            self.game_screen.start_screen()

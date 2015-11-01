@@ -3,16 +3,17 @@ import os
 import sys
 from pygame.locals import *
 from ping.pong.object.menu import Menu
-from ping.pong.screen.menu_screen import MenuScreen
 from ping.pong.util.setting import *
 from ping.pong.util import Utils
 
-
 __all__ = ['SettingScreen']
+
+
 class SettingScreen:
 
-    def __init__(self, surface):
-        self.status =False
+    def __init__(self, base_game, surface):
+        self.base_game = base_game
+        self.status = False
         self.surface = surface
         self.font = {
             35: pygame.font.Font("../font/FEASFBI.TTF", 35),
@@ -114,14 +115,15 @@ class SettingScreen:
                     self.init_screen()
 
                 elif event.key == K_RETURN:
-                    i = 0;
+                    i = 0
                     for menu in self.menus:
                         if menu._IS_SELECTED == 1 and i == 1:
                             Setting._SINGLE_MODE = Setting._SINGLE_MODE
                         if menu._IS_SELECTED == 1 and i == 2:
                             Setting._SINGLE_MODE = Setting._SINGLE_MODE
                         self.sounds["theme"].stop()
-                        menu_screen = MenuScreen(self.surface)
-                        menu_screen.start_screen()
-                        i += 1;
+                        # menu_screen = MenuScreen(self.surface)
+                        # menu_screen.start_screen()
+                        self.base_game.switch_screen(Setting.MENU_SCREEN)
+                        i += 1
         return True
