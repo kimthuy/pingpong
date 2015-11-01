@@ -27,9 +27,12 @@ class MenuScreen:
 
         self.menus = [menu_text, menu_start, menu_setting, menu_exit]
         self.sounds = {
-            "theme": pygame.mixer.Sound("../media/sound/menu-screen-theme.wav")
+            "theme": pygame.mixer.Sound("../media/sound/menu-screen-theme.wav"),
+            "select-menu": pygame.mixer.Sound("../media/sound/select-menu.wav"),
+            "click-menu": pygame.mixer.Sound("../media/sound/select-menu.wav")
         }
-        self.sounds["theme"].set_volume(0.5)
+        self.sounds["theme"].set_volume(0.25)
+        self.sounds["select-menu"].set_volume(2)
 
     def start_screen(self):
         clock = pygame.time.Clock()
@@ -86,6 +89,7 @@ class MenuScreen:
                         i += 1
                     if is_first_time:
                         self.menus[1]._IS_SELECTED = 1
+                    self.sounds["select-menu"].play()
                     self.init_screen()
 
                 elif event.key == K_UP:
@@ -105,6 +109,7 @@ class MenuScreen:
                         i += 1
                     if is_first_time:
                         self.menus[3]._IS_SELECTED = 1
+                    self.sounds["select-menu"].play()
                     self.init_screen()
 
                 elif event.key == K_RETURN:
