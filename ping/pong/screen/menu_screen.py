@@ -4,7 +4,7 @@ import sys
 from pygame.locals import *
 from ping.pong.util.setting import Setting
 from ping.pong.object.menu import Menu
-from ping.pong.screen.game_screen import GameScreen
+from ping.pong.screen.game_screen import ScreenGame
 
 from ping.pong.util import Utils
 
@@ -17,10 +17,6 @@ class MenuScreen:
         self.base_game = base_game
         self.status =False
         self.surface = surface
-        self.font = {
-            35: pygame.font.Font("../font/FEASFBI.TTF", 35),
-            70: pygame.font.Font("../font/FEASFBI.TTF", 70)
-        }
         self.bg = pygame.image.load("../media/image/menu-bg.png")
 
         menu_text = Menu(self.surface, "Menu", 70, 550, 60)
@@ -59,12 +55,12 @@ class MenuScreen:
     def init_menu(self):
         i = 0
         for menu in self.menus:
-            if i == 0: menu.draw_menu((255,255,255))
+            if i == 0: menu.draw_menu()
             else:
-                if menu.is_selected == 1:
-                    menu.draw_menu((255,255,255))
+                if menu._IS_SELECTED == Menu._SELECT:
+                    menu.draw_menu()
                 else:
-                    menu.draw_menu((128,255,0))
+                    menu.draw_menu()
             i += 1
 
     def get_input(self):
@@ -77,19 +73,19 @@ class MenuScreen:
                     i = 0
                     is_first_time = True
                     for menu in self.menus:
-                        if menu.is_selected == 1:
+                        if menu._IS_SELECTED == Menu._SELECT:
                             if i == 1:
-                                self.menus[2].is_selected = 1
+                                self.menus[2]._IS_SELECTED = Menu._SELECT
                             elif i == 2:
-                                self.menus[3].is_selected = 1
+                                self.menus[3]._IS_SELECTED = Menu._SELECT
                             elif i == 3:
-                                self.menus[1].is_selected = 1
+                                self.menus[1]._IS_SELECTED = Menu._SELECT
                             is_first_time = False
-                            menu.is_selected = 0
+                            menu._IS_SELECTED = Menu._NON_SELECT
                             break
                         i += 1
                     if is_first_time:
-                        self.menus[1].is_selected = 1
+                        self.menus[1]._IS_SELECTED = Menu._SELECT
                     self.sounds["select-menu"].play()
                     self.init_screen()
 
@@ -97,35 +93,35 @@ class MenuScreen:
                     i = 0
                     is_first_time = True
                     for menu in self.menus:
-                        if menu.is_selected == 1:
+                        if menu._IS_SELECTED == Menu._SELECT:
                             if i == 1:
-                                self.menus[3].is_selected = 1
+                                self.menus[3]._IS_SELECTED = Menu._SELECT
                             elif i == 2:
-                                self.menus[1].is_selected = 1
+                                self.menus[1]._IS_SELECTED = Menu._SELECT
                             elif i == 3:
-                                self.menus[2].is_selected = 1
+                                self.menus[2]._IS_SELECTED = Menu._SELECT
                             is_first_time = False
-                            menu.is_selected = 0
+                            menu._IS_SELECTED = Menu._NON_SELECT
                             break
                         i += 1
                     if is_first_time:
-                        self.menus[3].is_selected = 1
+                        self.menus[3]._IS_SELECTED = Menu._SELECT
                     self.sounds["select-menu"].play()
                     self.init_screen()
 
                 elif event.key == K_RETURN:
                     i = 0;
                     for menu in self.menus:
-                        if menu.is_selected == 1 and i == 1:
+                        if menu._IS_SELECTED == Menu._SELECT and i == 1:
                             self.sounds["theme"].stop()
-                            game_screen = GameScreen([800, 500], self.surface)
+                            game_screen = ScreenGame([800, 500], self.surface)
                             game_screen.init_screen()
                             game_screen.play()
-                        if menu.is_selected == 1 and i == 2:
+                        if menu._IS_SELECTED == Menu._SELECT and i == 2:
                             self.sounds["theme"].stop()
                             # setting_screen = SettingScreen(self.surface)
                             # setting_screen.start_screen()
                             self.base_game.switch_screen(Setting.SETTING_SCREEN)
-                        elif menu.is_selected == 1 and i == 3: return False
+                        elif menu._IS_SELECTED == Menu._SELECT and i == 3: return False
                         i += 1;
         return True
