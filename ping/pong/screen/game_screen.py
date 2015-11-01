@@ -30,7 +30,7 @@ class ScreenGame(BaseScreen):
         self.sounds["ping"].set_volume(0.05)
         self.sounds["click"].set_volume(0.5)
         self.sounds["da-ding"].set_volume(0.5)
-
+        self.bg = pygame.image.load("../media/image/pingpong-table.png")
         self.font = {
             18: pygame.font.SysFont("Times New Roman",18),
             72: pygame.font.SysFont("Times New Roman",72)
@@ -163,7 +163,8 @@ class ScreenGame(BaseScreen):
                 # balls.append(Ball(screen_size[0]/2,screen_size[1]/2,200.0))
 
     def draw(self):
-        self.surface.fill((12,14,101))
+        #self.surface.fill((12,14,101))
+        self.surface.blit(self.bg, (0, 0))
 
         for ball in self.balls:
             ball.draw()
