@@ -19,6 +19,7 @@ class SettingScreen:
         self.bg = pygame.image.load("../media/image/menu-bg.png")
 
         menu_text = Menu(self.surface, "Setting", 70, 550, 60)
+        menu_text.is_selected = Menu.SELECT
         menu_start = Menu(self.surface, "One Player", 35, 580, 150)
         menu_setting = Menu(self.surface, "Two Players", 35, 575, 190)
         menu_exit = Menu(self.surface, "Back", 35, 630, 230)
@@ -74,7 +75,7 @@ class SettingScreen:
                     i = 0
                     is_first_time = True
                     for menu in self.menus:
-                        if menu.is_selected == Menu.SELECT:
+                        if i > 0 and menu.is_selected == Menu.SELECT:
                             if i == 1:
                                 self.menus[2].is_selected = Menu.SELECT
                             elif i == 2:
@@ -94,7 +95,7 @@ class SettingScreen:
                     i = 0
                     is_first_time = True
                     for menu in self.menus:
-                        if menu.is_selected == Menu.SELECT:
+                        if i > 0 and menu.is_selected == Menu.SELECT:
                             if i == 1:
                                 self.menus[3].is_selected = Menu.SELECT
                             elif i == 2:
