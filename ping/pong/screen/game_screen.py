@@ -13,8 +13,9 @@ __all__ = ['GameScreen']
 
 class GameScreen(BaseScreen):
 
-    def __init__(self, screen_size, surface):
+    def __init__(self, base_game, screen_size, surface):
         # BaseScreen.__init__(self)
+        self.base_game = base_game
         self.surface = surface
         self.dt = 1.0/60.0
         self.balls = []
@@ -23,7 +24,7 @@ class GameScreen(BaseScreen):
 
     def init_screen(self):
         self.sounds = {
-            "ping" : pygame.mixer.Sound("../media/sound/ping.wav"),
+            "ping" : pygame.mixer.Sound("../media/sound/click.wav"),
             "click" : pygame.mixer.Sound("../media/sound/paddle-hit.wav"),
             "da-ding" : pygame.mixer.Sound("../media/sound/da-ding.wav")
         }
@@ -78,7 +79,7 @@ class GameScreen(BaseScreen):
         for event in pygame.event.get():
             if event.type == QUIT: return False
             elif event.type == KEYDOWN:
-                if event.key == K_ESCAPE: return False
+                if event.key == K_ESCAPE or event.key == K_BACKSPACE: self.base_game.switch_screen(Setting.MENU_SCREEN)
         for player in self.players:
             for paddle in player.paddles:
                 paddle.update(keys)
@@ -106,7 +107,7 @@ class GameScreen(BaseScreen):
         balls2 = []
         for ball in self.balls:
             removed = False
-            for subs_tep in range(10): #Do substeps so that it is much harder for the ball to ghost through the paddles.
+            for subs_tep in range(10):
                 ball.move(self.dt/10.0)
 
                 if ball.pos[0] < 0:
@@ -159,11 +160,8 @@ class GameScreen(BaseScreen):
             Setting.between_rounds_timer -= self.dt
             if Setting.between_rounds_timer < 0:
                 self.balls.append(Ball(self.screen_size[0]/2, self.screen_size[1]/2,200.0, self.surface))
-                # balls.append(Ball(screen_size[0]/2,screen_size[1]/2,200.0))
-                # balls.append(Ball(screen_size[0]/2,screen_size[1]/2,200.0))
 
     def draw(self):
-        #self.surface.fill((12,14,101))
         self.surface.blit(self.bg, (0, 0))
 
         for ball in self.balls:

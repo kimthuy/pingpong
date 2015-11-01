@@ -22,6 +22,7 @@ class MenuScreen:
         menu_text = Menu(self.surface, "Menu", 70, 550, 60)
         menu_text.is_selected = Menu.SELECT
         menu_start = Menu(self.surface, "Play", 35, 585, 150)
+        menu_start.is_selected = Menu.SELECT
         menu_setting = Menu(self.surface, "Setting", 35, 575, 190)
         menu_exit = Menu(self.surface, "Exit Game", 35, 560, 230)
 
@@ -115,7 +116,7 @@ class MenuScreen:
                     for menu in self.menus:
                         if menu.is_selected == Menu.SELECT and i == 1:
                             self.sounds["theme"].stop()
-                            game_screen = GameScreen([800, 500], self.surface)
+                            game_screen = GameScreen(self.base_game, [800, 500], self.surface)
                             game_screen.init_screen()
                             game_screen.play()
                         if menu.is_selected == Menu.SELECT and i == 2:

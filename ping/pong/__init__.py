@@ -31,14 +31,9 @@ class Pong:
 
         self.menu_screen = MenuScreen(self, self.surface)
         self.setting_screen = SettingScreen(self, self.surface)
-        self.game_screen = GameScreen(self, self.surface)
+        self.game_screen = GameScreen(self, self.screen_size, self.surface)
 
         self.switch_screen(Setting.MENU_SCREEN)
-
-
-        #game_screen = ScreenGame(self.screen_size, self.surface)
-        #game_screen.init_screen()
-        #game_screen.play()
 
     def switch_screen(self, screen_index):
         if screen_index == Setting.MENU_SCREEN:
