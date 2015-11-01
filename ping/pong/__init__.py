@@ -22,8 +22,8 @@ class Pong:
         pygame.display.set_caption("Ping Pong")
         pygame.display.set_icon(lifeimg)
 
-        menu_screen = MenuScreen( self.surface);
-        menu_screen.start_screen();
+        menu_screen = MenuScreen(self.surface)
+        menu_screen.start_screen()
 
         #game_screen = ScreenGame(self.screen_size, self.surface)
         #game_screen.init_screen()

@@ -3,7 +3,8 @@ import os
 import sys
 from pygame.locals import *
 from ping.pong.object.menu import Menu
-from ping.pong.screen.game_screen import *
+from ping.pong.screen.game_screen import ScreenGame
+from ping.pong.screen.setting_screen import SettingScreen
 from ping.pong.util import Utils
 
 
@@ -21,9 +22,9 @@ class MenuScreen:
         self.bg = pygame.image.load("../media/image/menu-bg.png")
 
         menu_text = Menu(self.surface, "Menu", 70, 550, 60)
-        menu_start = Menu(self.surface, "Play", 35, 580, 150)
-        menu_setting = Menu(self.surface, "Setting", 35, 570, 190)
-        menu_exit = Menu(self.surface, "Exit", 35, 580, 230)
+        menu_start = Menu(self.surface, "Play", 35, 585, 150)
+        menu_setting = Menu(self.surface, "Setting", 35, 575, 190)
+        menu_exit = Menu(self.surface, "Exit Game", 35, 560, 230)
 
         self.menus = [menu_text, menu_start, menu_setting, menu_exit]
         self.sounds = {
@@ -120,6 +121,10 @@ class MenuScreen:
                             game_screen = ScreenGame([800, 500], self.surface)
                             game_screen.init_screen()
                             game_screen.play()
-                        if menu._IS_SELECTED == 1 and i == 3: return False
+                        if menu._IS_SELECTED == 1 and i == 2:
+                            self.sounds["theme"].stop()
+                            setting_screen = SettingScreen(self.surface)
+                            setting_screen.start_screen()
+                        elif menu._IS_SELECTED == 1 and i == 3: return False
                         i += 1;
         return True
