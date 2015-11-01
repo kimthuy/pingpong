@@ -8,10 +8,10 @@ from ping.pong.object.ball import Ball
 from ping.pong.util import Utils
 from ping.pong.screen.base_screen import *
 from ping.pong.util.setting import *
-__all__ = ['ScreenGame']
+__all__ = ['GameScreen']
 
 
-class ScreenGame(BaseScreen):
+class GameScreen(BaseScreen):
 
     def __init__(self, screen_size, surface):
         # BaseScreen.__init__(self)
@@ -38,7 +38,7 @@ class ScreenGame(BaseScreen):
 
         up_key = K_w
         down_key = K_s
-        if  Setting._PLAY_MODE == Setting._SINGLE_MODE:
+        if  Setting.PLAY_MODE == Setting.SINGLE_MODE:
             up_key = None
             down_key = None
 
@@ -64,7 +64,7 @@ class ScreenGame(BaseScreen):
                 break
             self.update()
             self.move()
-            if Setting._PLAY_MODE == Setting._SINGLE_MODE:
+            if Setting.PLAY_MODE == Setting.SINGLE_MODE:
                 self.ai_move()
             self.draw()
             clock.tick(60)

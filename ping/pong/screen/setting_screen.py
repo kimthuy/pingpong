@@ -62,7 +62,7 @@ class SettingScreen:
         for menu in self.menus:
             if i == 0: menu.draw_menu((255,255,255))
             else:
-                if menu._IS_SELECTED == 1:
+                if menu.is_selected == 1:
                     menu.draw_menu((255,255,255))
                 else:
                     menu.draw_menu((128,255,0))
@@ -78,19 +78,19 @@ class SettingScreen:
                     i = 0
                     is_first_time = True
                     for menu in self.menus:
-                        if menu._IS_SELECTED == 1:
+                        if menu.is_selected == 1:
                             if i == 1:
-                                self.menus[2]._IS_SELECTED = 1
+                                self.menus[2].is_selected = 1
                             elif i == 2:
-                                self.menus[3]._IS_SELECTED = 1
+                                self.menus[3].is_selected = 1
                             elif i == 3:
-                                self.menus[1]._IS_SELECTED = 1
+                                self.menus[1].is_selected = 1
                             is_first_time = False
-                            menu._IS_SELECTED = 0
+                            menu.is_selected = 0
                             break
                         i += 1
                     if is_first_time:
-                        self.menus[1]._IS_SELECTED = 1
+                        self.menus[1].is_selected = 1
                     self.sounds["select-menu"].play()
                     self.init_screen()
 
@@ -98,29 +98,29 @@ class SettingScreen:
                     i = 0
                     is_first_time = True
                     for menu in self.menus:
-                        if menu._IS_SELECTED == 1:
+                        if menu.is_selected == 1:
                             if i == 1:
-                                self.menus[3]._IS_SELECTED = 1
+                                self.menus[3].is_selected = 1
                             elif i == 2:
-                                self.menus[1]._IS_SELECTED = 1
+                                self.menus[1].is_selected = 1
                             elif i == 3:
-                                self.menus[2]._IS_SELECTED = 1
+                                self.menus[2].is_selected = 1
                             is_first_time = False
-                            menu._IS_SELECTED = 0
+                            menu.is_selected = 0
                             break
                         i += 1
                     if is_first_time:
-                        self.menus[3]._IS_SELECTED = 1
+                        self.menus[3].is_selected = 1
                     self.sounds["select-menu"].play()
                     self.init_screen()
 
                 elif event.key == K_RETURN:
                     i = 0
                     for menu in self.menus:
-                        if menu._IS_SELECTED == 1 and i == 1:
-                            Setting._SINGLE_MODE = Setting._SINGLE_MODE
-                        if menu._IS_SELECTED == 1 and i == 2:
-                            Setting._SINGLE_MODE = Setting._SINGLE_MODE
+                        if menu.is_selected == 1 and i == 1:
+                            Setting.SINGLE_MODE = Setting.SINGLE_MODE
+                        if menu.is_selected == 1 and i == 2:
+                            Setting.SINGLE_MODE = Setting.SINGLE_MODE
                         self.sounds["theme"].stop()
                         # menu_screen = MenuScreen(self.surface)
                         # menu_screen.start_screen()

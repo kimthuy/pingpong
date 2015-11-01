@@ -4,7 +4,7 @@ __all__ = ['Menu']
 
 
 class Menu:
-    _IS_SELECTED = 0
+    is_selected = 0
 
     def __init__(self, surface, text, font_size, x, y):
         self.font_size = font_size

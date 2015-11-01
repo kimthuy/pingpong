@@ -4,9 +4,9 @@ __all__ = ['Setting']
 
 class Setting:
 
-    _SINGLE_MODE = 1
-    _MULTI_MODE = 2
-    _PLAY_MODE = _MULTI_MODE
+    SINGLE_MODE = 1
+    MULTI_MODE = 2
+    PLAY_MODE = MULTI_MODE
 
     MENU_SCREEN = 0
     SETTING_SCREEN = 1

@@ -7,7 +7,7 @@ from ping.pong.object.ball import Ball
 from ping.pong.util import Utils
 from ping.pong.util.setting import Setting
 from ping.pong.screen.base_screen import BaseScreen
-from ping.pong.screen.game_screen import ScreenGame
+from ping.pong.screen.game_screen import GameScreen
 from ping.pong.screen.menu_screen import MenuScreen
 from ping.pong.screen.setting_screen import SettingScreen
 
@@ -31,7 +31,7 @@ class Pong:
 
         self.menu_screen = MenuScreen(self, self.surface)
         self.setting_screen = SettingScreen(self, self.surface)
-        self.game_screen = ScreenGame(self, self.surface)
+        self.game_screen = GameScreen(self, self.surface)
 
         self.switch_screen(Setting.MENU_SCREEN)
 
