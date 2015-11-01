@@ -17,18 +17,15 @@ class ScreenGame(BaseScreen):
         # BaseScreen.__init__(self)
         self.surface = surface
         self.dt = 1.0/60.0
-        self.icon = pygame.Surface((1, 1))
-        self.icon.set_alpha(0)
         self.balls = []
         self.screen_size = screen_size
         self.stop = False
-        pygame.display.set_icon(self.icon)
 
     def init_screen(self):
         self.sounds = {
-            "ping" : pygame.mixer.Sound("data/ping.wav"),
-            "click" : pygame.mixer.Sound("data/click.wav"),
-            "da-ding" : pygame.mixer.Sound("data/da-ding.wav")
+            "ping" : pygame.mixer.Sound("../media/sound/ping.wav"),
+            "click" : pygame.mixer.Sound("../media/sound/paddle-hit.mp3"),
+            "da-ding" : pygame.mixer.Sound("../media/sound/da-ding.wav")
         }
         self.sounds["ping"].set_volume(0.05)
         self.sounds["click"].set_volume(0.5)
@@ -50,8 +47,8 @@ class ScreenGame(BaseScreen):
 
         self.paddles = [paddle_1, paddle_2]
 
-        player_1 = Player((0,255,0), self.paddles[:1], self.sounds["da-ding"])
-        player_2 = Player((247,52,12), self.paddles[1:], self.sounds["da-ding"])
+        player_1 = Player((0,255,0), self.paddles[:1], self.sounds["click"], self.sounds["da-ding"])
+        player_2 = Player((247,52,12), self.paddles[1:], self.sounds["click"], self.sounds["da-ding"])
 
         self.players = [player_1, player_2]
 

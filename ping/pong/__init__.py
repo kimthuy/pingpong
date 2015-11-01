@@ -14,9 +14,17 @@ class Pong:
         pygame.display.init()
         pygame.font.init()
         pygame.mixer.init(buffer=0)
-        self.screen_size = [800,500]
+        self.screen_size = [800,491]
         self.surface = pygame.display.set_mode(self.screen_size)
-        pygame.display.set_caption("Ping Pang Pong - v.3.0.0 - Ian Mallett - 2012")
-        game_screen = ScreenGame(self.screen_size, self.surface)
-        game_screen.init_screen()
-        game_screen.play()
+
+        lifeimg = pygame.image.load("../media/image/icon.png").convert_alpha()
+        pygame.display.set_icon(lifeimg)
+        pygame.display.set_caption("Ping Pong")
+        pygame.display.set_icon(lifeimg)
+
+        menu_screen = MenuScreen( self.surface);
+        menu_screen.start_screen();
+
+        #game_screen = ScreenGame(self.screen_size, self.surface)
+        #game_screen.init_screen()
+        #game_screen.play()
