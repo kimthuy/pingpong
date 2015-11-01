@@ -152,7 +152,7 @@ class GameScreen(BaseScreen):
             if not removed:
                 balls2.append(ball)
 
-        if len(balls2) == 0 and len(self.balls) > 0: #someone scored the last of the balls
+        if len(balls2) == 0 and len(self.balls) > 0:
             Setting.between_rounds_timer = 3.0
 
         self.balls = balls2
