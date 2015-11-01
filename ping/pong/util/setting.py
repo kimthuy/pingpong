@@ -3,7 +3,6 @@ __all__ = ['Setting']
 
 
 class Setting:
-
     SINGLE_MODE = 1
     MULTI_MODE = 2
     PLAY_MODE = MULTI_MODE
@@ -13,3 +12,6 @@ class Setting:
     GAME_SCREEN = 2
 
     between_rounds_timer = 3.0
+
+    def __init__(self):
+        global PLAY_MODE

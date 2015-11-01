@@ -38,7 +38,7 @@ class GameScreen(BaseScreen):
 
         up_key = K_w
         down_key = K_s
-        if  Setting.PLAY_MODE == Setting.SINGLE_MODE:
+        if Setting.PLAY_MODE == Setting.SINGLE_MODE:
             up_key = None
             down_key = None
 
