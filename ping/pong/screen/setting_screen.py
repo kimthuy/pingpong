@@ -118,9 +118,9 @@ class SettingScreen:
                     i = 0
                     for menu in self.menus:
                         if menu._IS_SELECTED == 1 and i == 1:
-                            Setting._SINGLE_MODE = Setting._SINGLE_MODE
+                            Setting._PLAY_MODE = Setting._SINGLE_MODE
                         if menu._IS_SELECTED == 1 and i == 2:
-                            Setting._SINGLE_MODE = Setting._SINGLE_MODE
+                            Setting._PLAY_MODE = Setting._MULTI_MODE
                         self.sounds["theme"].stop()
                         # menu_screen = MenuScreen(self.surface)
                         # menu_screen.start_screen()
