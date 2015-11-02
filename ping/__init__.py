@@ -8,6 +8,8 @@ if sys.platform == 'win32' or sys.platform == 'win64':
 
 if __name__ == '__main__':
     try:
+        if len(sys.argv) > 1:
+            os.chdir(sys.argv[1])
         Pong()
     except Exception as e:
         tb = sys.exc_info()[2]
