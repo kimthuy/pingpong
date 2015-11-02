@@ -9,6 +9,7 @@ from ping.pong.util.setting import Setting
 from ping.pong.screen.base_screen import BaseScreen
 from ping.pong.screen.game_screen import GameScreen
 from ping.pong.screen.menu_screen import MenuScreen
+from ping.pong.screen.highscore_screen import HighScoreScreen
 from ping.pong.screen.setting_screen import SettingScreen
 
 class Pong:
@@ -32,6 +33,7 @@ class Pong:
         self.menu_screen = MenuScreen(self, self.surface)
         self.setting_screen = SettingScreen(self, self.surface)
         self.game_screen = GameScreen(self, self.screen_size, self.surface)
+        self.highscore_screen = HighScoreScreen(self, self.surface)
 
         self.switch_screen(Setting.MENU_SCREEN)
 
@@ -41,4 +43,7 @@ class Pong:
         elif screen_index == Setting.SETTING_SCREEN:
             self.setting_screen.start_screen()
         elif screen_index == Setting.GAME_SCREEN:
-            self.game_screen.start_screen()
+            self.game_screen.init_screen()
+            self.game_screen.play()
+        elif screen_index == Setting.HIGH_SCORE_SCREEN:
+            self.highscore_screen.start_screen()

@@ -1,0 +1,5 @@
+Ngoc: 21
+Thang: 10
+Huy: 26
+Luu: 30
+Thuy: 20
