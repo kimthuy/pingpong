@@ -81,7 +81,10 @@ class GameScreen(BaseScreen):
         for event in pygame.event.get():
             if event.type == QUIT: return False
             elif event.type == KEYDOWN:
-                if event.key == K_ESCAPE or event.key == K_BACKSPACE: self.base_game.switch_screen(Setting.MENU_SCREEN)
+                if event.key == K_ESCAPE or event.key == K_BACKSPACE:
+                    Setting.between_rounds_timer = 3.0
+                    self.balls = []
+                    self.base_game.switch_screen(Setting.MENU_SCREEN)
         for player in self.players:
             for paddle in player.paddles:
                 paddle.update(keys)
