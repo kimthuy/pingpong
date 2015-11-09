@@ -76,7 +76,7 @@ class HighScoreScreen:
             if event.type == QUIT: return False
             elif event.type == KEYDOWN:
                 if event.key == K_ESCAPE: return False
-                elif event.key == K_ESCAPE or event.key == K_BACKSPACE:
+                elif event.key == K_BACKSPACE:
                     self.sounds["theme"].stop()
                     self.base_game.switch_screen(Setting.MENU_SCREEN)
         return True

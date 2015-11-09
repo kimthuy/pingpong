@@ -1,7 +1,5 @@
-import os
 import pygame
 from pygame.locals import *
-from math import *
 from ping.pong.object.player import Player
 from ping.pong.object.paddle import Paddle
 from ping.pong.object.ball import Ball
