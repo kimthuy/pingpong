@@ -11,7 +11,6 @@ try:
     pkg_resources.declare_namespace(__name__)
 except:
     import pkgutil
-    __path__ = pkgutil.extend_path(__path__.__name__)
 
 if sys.platform == 'win32' or sys.platform == 'win64':
     os.environ['SDL_VIDEO_CENTERED'] = '1'
