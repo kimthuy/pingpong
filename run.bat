@@ -1,2 +1,2 @@
 set PYTHONPATH=%CD%
-python ./ping/__init__.py %CD%/ping
+python ./__init__.py %CD%/ping
