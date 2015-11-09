@@ -33,14 +33,11 @@ class HighScoreScreen:
         self.get_high_score()
 
     def start_screen(self):
-        clock = pygame.time.Clock()
         self.sounds["theme"].play(-1)
+        self.init_screen()
         while True:
             if not self.get_input():
                 break
-            self.init_screen()
-            clock.tick(60)
-            self.dt = 1.0/Utils.clamp(clock.get_fps(), 30, 90)
             pygame.display.update()
         pygame.quit()
         sys.exit()

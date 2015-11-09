@@ -57,9 +57,6 @@ class GameScreen(BaseScreen):
 
         self.ball = Ball(self.screen_size[0]/2, self.screen_size[1]/2,200.0, self.surface)
 
-        # start play
-        self.play()
-
     def play(self):
         clock = pygame.time.Clock()
         while True:

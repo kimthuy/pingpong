@@ -38,12 +38,11 @@ class MenuScreen:
         self.sounds["select-menu"].set_volume(2)
 
     def start_screen(self):
-        clock = pygame.time.Clock()
         self.sounds["theme"].play(-1)
+        self.init_screen()
         while True:
             if not self.get_input():
                 break
-            self.init_screen()
             pygame.display.update()
         pygame.quit()
         sys.exit()
