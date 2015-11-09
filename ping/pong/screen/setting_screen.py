@@ -16,7 +16,7 @@ class SettingScreen:
         self.status = False
         self.surface = surface
         self.dt = 1.0/60.0
-        self.bg = pygame.image.load("../media/image/menu-bg.png")
+        self.bg = pygame.image.load(Utils.get_path('image/menu-bg.png'))
 
         menu_text = Menu(self.surface, "Setting", 70, 550, 60)
         menu_text.is_selected = Menu.SELECT
@@ -26,9 +26,9 @@ class SettingScreen:
 
         self.menus = [menu_text, menu_start, menu_setting, menu_exit]
         self.sounds = {
-            "theme": pygame.mixer.Sound("../media/sound/menu-screen-theme.wav"),
-            "select-menu": pygame.mixer.Sound("../media/sound/select-menu.wav"),
-            "click-menu": pygame.mixer.Sound("../media/sound/select-menu.wav")
+            "theme": pygame.mixer.Sound(Utils.get_path('sound/menu-screen-theme.wav')),
+            "select-menu": pygame.mixer.Sound(Utils.get_path('sound/select-menu.wav')),
+            "click-menu": pygame.mixer.Sound(Utils.get_path('sound/select-menu.wav'))
         }
         self.sounds["theme"].set_volume(0.25)
         self.sounds["select-menu"].set_volume(2)

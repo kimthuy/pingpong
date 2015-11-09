@@ -19,13 +19,13 @@ class HighScoreScreen:
         self.status = False
         self.surface = surface
         self.dt = 1.0/60.0
-        self.bg = pygame.image.load("../media/image/menu-bg.png")
+        self.bg = pygame.image.load(Utils.get_path('image/menu-bg.png'))
         self.font = {
-            20: pygame.font.Font("../font/ActualBook.otf", 20),
-            55: pygame.font.Font("../font/ActualBook.otf", 55)
+            20: pygame.font.Font(Utils.get_path('font/ActualBook.otf'), 20),
+            55: pygame.font.Font(Utils.get_path('font/ActualBook.otf'), 55)
         }
         self.sounds = {
-            "theme": pygame.mixer.Sound("../media/sound/menu-screen-theme.wav")
+            "theme": pygame.mixer.Sound(Utils.get_path('sound/menu-screen-theme.wav'))
         }
         self.sounds["theme"].set_volume(0.25)
 
@@ -58,7 +58,7 @@ class HighScoreScreen:
         pygame.display.flip()
 
     def get_high_score(self):
-        file = open("../doc/high-score.txt", "r")
+        file = open(Utils.get_path('doc/high-score.txt'), "r")
         stuff = file.readlines()
         for line in stuff:
             self.high_score_list.append(line)

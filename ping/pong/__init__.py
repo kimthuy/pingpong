@@ -1,3 +1,4 @@
+import os
 import pygame
 from pygame.locals import *
 from math import *
@@ -25,7 +26,7 @@ class Pong:
         self.screen_size = [800,500]
         self.surface = pygame.display.set_mode(self.screen_size)
 
-        lifeimg = pygame.image.load("../media/image/icon.png").convert_alpha()
+        lifeimg = pygame.image.load(Utils.get_path('image/icon.png')).convert_alpha()
         pygame.display.set_icon(lifeimg)
         pygame.display.set_caption("Ping Pong")
         pygame.display.set_icon(lifeimg)

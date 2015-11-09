@@ -1,4 +1,5 @@
 import pygame
+from ping.pong.util import Utils
 
 __all__ = ['Menu']
 
@@ -11,7 +12,7 @@ class Menu:
     def __init__(self, surface, text, font_size, x, y):
         self.font_size = font_size
         self.font = {
-            self.font_size: pygame.font.Font("../font/FEASFBI.TTF", self.font_size),
+            self.font_size: pygame.font.Font(Utils.get_path('font/FEASFBI.TTF'), self.font_size),
         }
 
         self.text = text

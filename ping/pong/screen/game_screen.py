@@ -1,5 +1,6 @@
 import pygame
-import sys, os, traceback
+import os
+from os import path
 from pygame.locals import *
 from math import *
 from ping.pong.object.player import Player
@@ -23,15 +24,16 @@ class GameScreen(BaseScreen):
         self.stop = False
 
     def init_screen(self):
+
         self.sounds = {
-            "ping" : pygame.mixer.Sound("../media/sound/click.wav"),
-            "click" : pygame.mixer.Sound("../media/sound/paddle-hit.wav"),
-            "da-ding" : pygame.mixer.Sound("../media/sound/da-ding.wav")
+            "ping": pygame.mixer.Sound(Utils.get_path('sound/click.wav')),
+            "click": pygame.mixer.Sound(Utils.get_path('sound/paddle-hit.wav')),
+            "da-ding": pygame.mixer.Sound(Utils.get_path('sound/da-ding.wav'))
         }
         self.sounds["ping"].set_volume(0.05)
         self.sounds["click"].set_volume(0.5)
         self.sounds["da-ding"].set_volume(0.5)
-        self.bg = pygame.image.load("../media/image/pingpong-table.png")
+        self.bg = pygame.image.load(Utils.get_path('image/pingpong-table.png'))
         self.font = {
             18: pygame.font.SysFont("Times New Roman",18),
             72: pygame.font.SysFont("Times New Roman",72)
