@@ -26,22 +26,19 @@ class SettingScreen:
 
         self.menus = [menu_text, menu_start, menu_setting, menu_exit]
         self.sounds = {
-            "theme": pygame.mixer.Sound(Utils.get_path('sound/menu-screen-theme.wav')),
-            "select-menu": pygame.mixer.Sound(Utils.get_path('sound/select-menu.wav')),
-            "click-menu": pygame.mixer.Sound(Utils.get_path('sound/select-menu.wav'))
+            'theme': pygame.mixer.Sound(Utils.get_path('sound/menu-screen-theme.wav')),
+            'select-menu': pygame.mixer.Sound(Utils.get_path('sound/select-menu.wav')),
+            'click-menu': pygame.mixer.Sound(Utils.get_path('sound/select-menu.wav'))
         }
         self.sounds["theme"].set_volume(0.25)
         self.sounds["select-menu"].set_volume(2)
 
     def start_screen(self):
-        clock = pygame.time.Clock()
         self.sounds["theme"].play(-1)
         while True:
             if not self.get_input():
                 break
             self.init_screen()
-            clock.tick(60)
-            self.dt = 1.0/Utils.clamp(clock.get_fps(), 30, 90)
             pygame.display.update()
         pygame.quit()
         sys.exit()

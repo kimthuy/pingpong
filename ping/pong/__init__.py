@@ -18,6 +18,7 @@ class Pong:
     menu_screen = None
     setting_screen = None
     game_screen = None
+    high_score_screen = None
 
     def __init__(self):
         pygame.display.init()
@@ -26,25 +27,28 @@ class Pong:
         self.screen_size = [800,500]
         self.surface = pygame.display.set_mode(self.screen_size)
 
-        lifeimg = pygame.image.load(Utils.get_path('image/icon.png')).convert_alpha()
-        pygame.display.set_icon(lifeimg)
+        life_image = pygame.image.load(Utils.get_path('image/icon.png')).convert_alpha()
+        pygame.display.set_icon(life_image)
         pygame.display.set_caption("Ping Pong")
-        pygame.display.set_icon(lifeimg)
-
-        self.menu_screen = MenuScreen(self, self.surface)
-        self.setting_screen = SettingScreen(self, self.surface)
-        self.game_screen = GameScreen(self, self.screen_size, self.surface)
-        self.highscore_screen = HighScoreScreen(self, self.surface)
+        pygame.display.set_icon(life_image)
 
         self.switch_screen(Setting.MENU_SCREEN)
 
     def switch_screen(self, screen_index):
         if screen_index == Setting.MENU_SCREEN:
+            if not self.menu_screen:
+                self.menu_screen = MenuScreen(self, self.surface)
             self.menu_screen.start_screen()
         elif screen_index == Setting.SETTING_SCREEN:
+            if not self.setting_screen:
+                self.setting_screen = SettingScreen(self, self.surface)
             self.setting_screen.start_screen()
         elif screen_index == Setting.GAME_SCREEN:
+            if not self.game_screen:
+                self.game_screen = GameScreen(self, self.screen_size, self.surface)
             self.game_screen.init_screen()
             self.game_screen.play()
         elif screen_index == Setting.HIGH_SCORE_SCREEN:
-            self.highscore_screen.start_screen()
+            if not self.high_score_screen:
+                self.high_score_screen = HighScoreScreen(self, self.surface)
+            self.high_score_screen.start_screen()

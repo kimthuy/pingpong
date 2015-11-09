@@ -5,13 +5,6 @@ from ping.pong import Pong
 
 MAIN_DIRECTORY = os.path.dirname(__file__)
 
-# A namespace package
-try:
-    import pkg_resources
-    pkg_resources.declare_namespace(__name__)
-except:
-    import pkgutil
-
 if sys.platform == 'win32' or sys.platform == 'win64':
     os.environ['SDL_VIDEO_CENTERED'] = '1'
 
