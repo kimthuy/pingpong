@@ -26,17 +26,17 @@ class GameScreen(BaseScreen):
     def init_screen(self):
 
         self.sounds = {
-            "ping": pygame.mixer.Sound(Utils.get_path('sound/click.wav')),
-            "click": pygame.mixer.Sound(Utils.get_path('sound/paddle-hit.wav')),
-            "da-ding": pygame.mixer.Sound(Utils.get_path('sound/da-ding.wav'))
+            'ping': pygame.mixer.Sound(Utils.get_path('sound/click.wav')),
+            'click': pygame.mixer.Sound(Utils.get_path('sound/paddle-hit.wav')),
+            'da-ding': pygame.mixer.Sound(Utils.get_path('sound/da-ding.wav'))
         }
-        self.sounds["ping"].set_volume(0.05)
-        self.sounds["click"].set_volume(0.5)
-        self.sounds["da-ding"].set_volume(0.5)
+        self.sounds['ping'].set_volume(0.05)
+        self.sounds['click'].set_volume(0.5)
+        self.sounds['da-ding'].set_volume(0.5)
         self.bg = pygame.image.load(Utils.get_path('image/pingpong-table.png'))
         self.font = {
-            18: pygame.font.SysFont("Times New Roman",18),
-            72: pygame.font.SysFont("Times New Roman",72)
+            18: pygame.font.SysFont('Times New Roman',18),
+            72: pygame.font.SysFont('Times New Roman',72)
         }
 
         up_key = K_w
@@ -50,8 +50,8 @@ class GameScreen(BaseScreen):
 
         self.paddles = [paddle_1, paddle_2]
 
-        player_1 = Player((0,255,0), self.paddles[:1], self.sounds["click"], self.sounds["da-ding"])
-        player_2 = Player((247,52,12), self.paddles[1:], self.sounds["click"], self.sounds["da-ding"])
+        player_1 = Player((0,255,0), self.paddles[:1], self.sounds['click'], self.sounds['da-ding'])
+        player_2 = Player((247,52,12), self.paddles[1:], self.sounds['click'], self.sounds['da-ding'])
 
         self.players = [player_1, player_2]
 
@@ -70,18 +70,17 @@ class GameScreen(BaseScreen):
             clock.tick(60)
             self.dt = 1.0/Utils.clamp(clock.get_fps(), 30, 90)
 
-        pygame.quit()
-        sys.exit()
-
     def get_input(self):
         keys = pygame.key.get_pressed()
         for event in pygame.event.get():
-            if event.type == QUIT: return False
-            elif event.type == KEYDOWN:
-                if event.key == K_ESCAPE or event.key == K_BACKSPACE:
+            if event.type == pygame.QUIT:
+                self.quit_game()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE or event.key == pygame.K_BACKSPACE:
                     Setting.between_rounds_timer = 3.0
                     self.balls = []
                     self.base_game.switch_screen(Setting.MENU_SCREEN)
+                    return False
         for player in self.players:
             for paddle in player.paddles:
                 paddle.update(keys)
@@ -124,11 +123,11 @@ class GameScreen(BaseScreen):
                 if ball.pos[1] < 0:
                     ball.pos[1] = 0
                     ball.speed[1] *= -1
-                    self.sounds["ping"].play()
+                    self.sounds['ping'].play()
                 elif ball.pos[1] > self.screen_size[1]:
                     ball.pos[1] = self.screen_size[1]
                     ball.speed[1] *= -1
-                    self.sounds["ping"].play()
+                    self.sounds['ping'].play()
                 for player in self.players:
                     for paddle in player.paddles:
                         if paddle.pos[0] < ball.pos[0] < paddle.pos[0]+paddle.dim[0] and \
@@ -148,7 +147,7 @@ class GameScreen(BaseScreen):
                                 ball.speed[1] = abs(ball.speed[1])
                             elif dist_min == dist_lrdu[3]:
                                 ball.speed[1] = -abs(ball.speed[1])
-                            self.sounds["click"].play()
+                            self.sounds['click'].play()
                             ball.speed_up()
 
             if not removed:
@@ -172,8 +171,8 @@ class GameScreen(BaseScreen):
             for paddle in player.paddles:
                 paddle.draw(player.color)
 
-        p1_score_text = self.font[18].render("Score "+str(self.players[0].score),True,(255,255,255))
-        p2_score_text = self.font[18].render("Score "+str(self.players[1].score),True,(255,255,255))
+        p1_score_text = self.font[18].render('Score '+str(self.players[0].score),True,(255,255,255))
+        p2_score_text = self.font[18].render('Score '+str(self.players[1].score),True,(255,255,255))
         self.surface.blit(p1_score_text,(20,20))
         self.surface.blit(p2_score_text,(self.screen_size[0]-p2_score_text.get_width()-20,20))
 

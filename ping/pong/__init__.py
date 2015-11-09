@@ -14,7 +14,7 @@ from ping.pong.screen.setting_screen import SettingScreen
 class Pong:
 
     menu_screen = None
-    setting_screen = None
+    # setting_screen = None
     game_screen = None
     high_score_screen = None
 
@@ -37,10 +37,10 @@ class Pong:
             if not self.menu_screen:
                 self.menu_screen = MenuScreen(self, self.surface)
             self.menu_screen.start_screen()
-        elif screen_index == Setting.SETTING_SCREEN:
-            if not self.setting_screen:
-                self.setting_screen = SettingScreen(self, self.surface)
-            self.setting_screen.start_screen()
+        # elif screen_index == Setting.SETTING_SCREEN:
+        #     if not self.setting_screen:
+        #         self.setting_screen = SettingScreen(self, self.surface)
+        #     self.setting_screen.start_screen()
         elif screen_index == Setting.GAME_SCREEN:
             if not self.game_screen:
                 self.game_screen = GameScreen(self, self.screen_size, self.surface)
