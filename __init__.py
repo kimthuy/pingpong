@@ -1,9 +1,7 @@
 import pygame
-import sys, os, traceback
+import os, sys, traceback
 from math import *
 from ping.pong import Pong
-
-MAIN_DIRECTORY = os.path.dirname(__file__)
 
 if sys.platform == 'win32' or sys.platform == 'win64':
     os.environ['SDL_VIDEO_CENTERED'] = '1'

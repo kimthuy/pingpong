@@ -2,19 +2,17 @@
 # -*- coding: utf-8 -*-
 
 import pygame
-import os
-import sys
-from pygame.locals import *
-from ping.pong.object.menu import Menu
-from ping.pong.util.setting import *
+from ping.pong.screen.base_screen import BaseScreen
+from ping.pong.util.setting import Setting
 from ping.pong.util import Utils
 
 __all__ = ['HighScoreScreen']
 
 
-class HighScoreScreen:
+class HighScoreScreen(BaseScreen):
 
     def __init__(self, base_game, surface):
+        BaseScreen.__init__(self)
         self.base_game = base_game
         self.status = False
         self.surface = surface
@@ -24,23 +22,16 @@ class HighScoreScreen:
             20: pygame.font.Font(Utils.get_path('font/ActualBook.otf'), 20),
             55: pygame.font.Font(Utils.get_path('font/ActualBook.otf'), 55)
         }
-        self.sounds = {
-            "theme": pygame.mixer.Sound(Utils.get_path('sound/menu-screen-theme.wav'))
-        }
-        self.sounds["theme"].set_volume(0.25)
 
         self.high_score_list = []
         self.get_high_score()
 
     def start_screen(self):
-        self.sounds["theme"].play(-1)
         self.init_screen()
         while True:
             if not self.get_input():
                 break
             pygame.display.update()
-        pygame.quit()
-        sys.exit()
 
     def end_screen(self):
         self.status = True
@@ -48,35 +39,35 @@ class HighScoreScreen:
     def init_screen(self):
         self.surface.blit(self.bg, (0, 0))
 
-        menu_text = self.font[55].render("High Score", True, (225,255,225))
+        menu_text = self.font[55].render('High Score', True, (225,255,225))
         self.surface.blit(menu_text, (370, 60))
 
         self.draw_high_score()
         pygame.display.flip()
 
     def get_high_score(self):
-        file = open(Utils.get_path('doc/high-score.txt'), "r")
-        stuff = file.readlines()
+        high_score_file = open(Utils.get_path('doc/high-score.txt'), 'r')
+        stuff = high_score_file.readlines()
         for line in stuff:
             self.high_score_list.append(line)
-        file.close()
+        high_score_file.close()
 
     def draw_high_score(self):
-        i = 0
-        for line in self.high_score_list:
-            y = 150 + i*40
+        for index, line in enumerate(self.high_score_list):
+            y = 150 + index*40
+            x = 560 + index*3
             u = unicode(line, 'utf8')
             menu_text = self.font[20].render(u, True, (128,255,0))
-            self.surface.blit(menu_text, (560, y))
-            i += 1
+            self.surface.blit(menu_text, (x, y))
 
     def get_input(self):
-        keys = pygame.key.get_pressed()
         for event in pygame.event.get():
-            if event.type == QUIT: return False
-            elif event.type == KEYDOWN:
-                if event.key == K_ESCAPE: return False
-                elif event.key == K_ESCAPE or event.key == K_BACKSPACE:
-                    self.sounds["theme"].stop()
+            if event.type == pygame.QUIT:
+                self.quit_game()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.quit_game()
+                elif event.key == pygame.K_BACKSPACE:
                     self.base_game.switch_screen(Setting.MENU_SCREEN)
+                    return False
         return True
