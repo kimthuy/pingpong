@@ -12,7 +12,7 @@ class Setting:
     GAME_SCREEN = 2
     HIGH_SCORE_SCREEN = 3
 
-    between_rounds_timer = 3.0
+    SOUND = True
+    MUSIC = True
 
-    def __init__(self):
-        global PLAY_MODE
+    between_rounds_timer = 3.0

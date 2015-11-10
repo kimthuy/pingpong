@@ -1,6 +1,10 @@
-import pygame
-import sys
-from ping.pong.object.menu import Menu
+from pygame import (
+    quit,
+    mixer
+)
+from sys import exit
+from ping.pong.util.setting import Setting
+from ping.pong.util import Utils
 
 __all__ = ['BaseScreen']
 
@@ -8,7 +12,11 @@ __all__ = ['BaseScreen']
 class BaseScreen:
 
     def __init__(self):
-        self.status =False
+        self.status = False
+        self.select_sound = mixer.Sound(Utils.get_path('sound/select-menu.wav'))
+        self.select_sound.set_volume(2)
+        self.check_sound = mixer.Sound(Utils.get_path('sound/select-menu.wav'))
+        self.check_sound.set_volume(5)
 
     def start_screen(self):
         self.init_screen()
@@ -25,16 +33,18 @@ class BaseScreen:
         pass
 
     def menu_move(self, step):
-        self.sounds['select-menu'].play()
+        self.play_sound(self.select_sound)
         for index, menu in enumerate(self.menus):
-            if menu.is_selected == Menu.SELECT:
-                menu.is_selected = Menu.NON_SELECT
-                menu.draw_menu()
+            if menu.is_selected:
+                menu.unselect()
                 selected_index = (index + step) % len(self.menus)
-                self.menus[selected_index].is_selected = Menu.SELECT
-                self.menus[selected_index].draw_menu()
+                self.menus[selected_index].selected()
                 break
 
+    def play_sound(self, sound):
+        if Setting.SOUND:
+            sound.play()
+
     def quit_game(self):
-        pygame.quit()
-        sys.exit()
+        quit()
+        exit()

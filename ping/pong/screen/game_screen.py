@@ -1,20 +1,19 @@
 import pygame
-import os
-from os import path
 from pygame.locals import *
-from math import *
 from ping.pong.object.player import Player
 from ping.pong.object.paddle import Paddle
 from ping.pong.object.ball import Ball
 from ping.pong.util import Utils
 from ping.pong.screen.base_screen import *
 from ping.pong.util.setting import *
+
 __all__ = ['GameScreen']
 
 
 class GameScreen(BaseScreen):
 
     def __init__(self, base_game, screen_size, surface):
+        BaseScreen.__init__(self)
         # BaseScreen.__init__(self)
         self.base_game = base_game
         self.surface = surface
@@ -39,14 +38,14 @@ class GameScreen(BaseScreen):
             72: pygame.font.SysFont('Times New Roman',72)
         }
 
-        up_key = K_w
-        down_key = K_s
+        up_key = pygame.K_w
+        down_key = pygame.K_s
         if Setting.PLAY_MODE == Setting.SINGLE_MODE:
             up_key = None
             down_key = None
 
         paddle_1 = Paddle(5, self.screen_size[1]/2-30, 10, 60, None, None, down_key, up_key, self.surface, self.dt, self.screen_size)
-        paddle_2 = Paddle(self.screen_size[0]-5-10, self.screen_size[1]/2-30, 10, 60, None, None, K_DOWN, K_UP, self.surface, self.dt, self.screen_size)
+        paddle_2 = Paddle(self.screen_size[0]-5-10, self.screen_size[1]/2-30, 10, 60, None, None, pygame.K_DOWN, pygame.K_UP, self.surface, self.dt, self.screen_size)
 
         self.paddles = [paddle_1, paddle_2]
 
