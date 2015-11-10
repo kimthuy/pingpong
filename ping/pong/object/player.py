@@ -1,3 +1,4 @@
+from ping.pong.util.setting import Setting
 
 __all__ = ['Player']
 
@@ -11,8 +12,10 @@ class Player:
         self.paddles = list(paddles)
 
     def hit(self):
-        self.sound_hit.play()
+        if Setting.SOUND:
+            self.sound_hit.play()
 
     def add_score(self):
         self.score += 1
-        self.sound_da_ding.play()
+        if Setting.SOUND:
+            self.sound_da_ding.play()

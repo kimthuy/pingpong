@@ -1,3 +1,5 @@
+from ping.pong.util.setting import Setting
+
 __all__ = ['AI']
 
 
@@ -9,8 +11,10 @@ class AI:
         self.paddles = list(paddles)
 
     def hit(self):
-        self.sound.play()
+        if Setting.SOUND:
+            self.sound.play()
 
     def add_score(self):
         self.score += 1
-        self.sound.play()
+        if Setting.SOUND:
+            self.sound.play()

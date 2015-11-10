@@ -1,5 +1,4 @@
 import pygame
-from pygame.locals import *
 from ping.pong.object.player import Player
 from ping.pong.object.paddle import Paddle
 from ping.pong.object.ball import Ball
@@ -49,8 +48,8 @@ class GameScreen(BaseScreen):
 
         self.paddles = [paddle_1, paddle_2]
 
-        player_1 = Player((0,255,0), self.paddles[:1], self.sounds['click'], self.sounds['da-ding'])
-        player_2 = Player((247,52,12), self.paddles[1:], self.sounds['click'], self.sounds['da-ding'])
+        player_1 = Player((0, 255, 0), self.paddles[:1], self.sounds['click'], self.sounds['da-ding'])
+        player_2 = Player((247, 52, 12), self.paddles[1:], self.sounds['click'], self.sounds['da-ding'])
 
         self.players = [player_1, player_2]
 
@@ -122,11 +121,11 @@ class GameScreen(BaseScreen):
                 if ball.pos[1] < 0:
                     ball.pos[1] = 0
                     ball.speed[1] *= -1
-                    self.sounds['ping'].play()
+                    self.play_sound(self.sounds['ping'])
                 elif ball.pos[1] > self.screen_size[1]:
                     ball.pos[1] = self.screen_size[1]
                     ball.speed[1] *= -1
-                    self.sounds['ping'].play()
+                    self.play_sound(self.sounds['ping'])
                 for player in self.players:
                     for paddle in player.paddles:
                         if paddle.pos[0] < ball.pos[0] < paddle.pos[0]+paddle.dim[0] and \

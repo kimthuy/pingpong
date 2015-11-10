@@ -31,7 +31,7 @@ class Pong:
 
         life_image = image.load(Utils.get_path('image/icon.png')).convert_alpha()
         display.set_icon(life_image)
-        display.set_caption("Ping Pong")
+        display.set_caption('Ping Pong')
         display.set_icon(life_image)
 
         self.theme_sound = mixer.Sound(Utils.get_path('sound/menu-screen-theme.wav'))

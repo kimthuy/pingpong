@@ -1,4 +1,4 @@
-import pygame
+from pygame import draw
 from ping.pong.util import Utils
 
 __all__ = ['Paddle']
@@ -35,11 +35,11 @@ class Paddle:
         if self.key_u and key[self.key_u]: self.move(0, speed)
 
     def draw(self, color):
-        pygame.draw.rect(self.surface,
+        draw.rect(self.surface,
                          color,
                          (self.pos[0],self.pos[1],self.dim[0],self.dim[1]),
                          0)
-        pygame.draw.rect(self.surface,
+        draw.rect(self.surface,
                          self._COLOR,
                          (self.pos[0],self.pos[1],self.dim[0],self.dim[1]),
                          1)

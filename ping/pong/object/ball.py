@@ -1,4 +1,4 @@
-import pygame
+from pygame import draw
 import random
 from math import *
 from ping.pong.util import Utils
@@ -47,7 +47,7 @@ class Ball:
         #                        list(map(Utils.round_int,[px,py])),
         #                        r)
         #     light += self._LIGHT
-        pygame.draw.circle(self.surface,
+        draw.circle(self.surface,
                            self._COLOR,
                            list(map(Utils.round_int, self.pos)),
                            self.radius)
