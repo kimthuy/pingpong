@@ -33,8 +33,8 @@ class GameScreen(BaseScreen):
         self.sounds['da-ding'].set_volume(0.5)
         self.bg = pygame.image.load(Utils.get_path('image/pingpong-table.png'))
         self.font = {
-            18: pygame.font.SysFont('Times New Roman',18),
-            72: pygame.font.SysFont('Times New Roman',72)
+            18: pygame.font.SysFont('Times New Roman', 18),
+            72: pygame.font.SysFont('Times New Roman', 72)
         }
 
         up_key = pygame.K_w
@@ -169,10 +169,10 @@ class GameScreen(BaseScreen):
             for paddle in player.paddles:
                 paddle.draw(player.color)
 
-        p1_score_text = self.font[18].render('Score '+str(self.players[0].score),True,(255,255,255))
-        p2_score_text = self.font[18].render('Score '+str(self.players[1].score),True,(255,255,255))
-        self.surface.blit(p1_score_text,(20,20))
-        self.surface.blit(p2_score_text,(self.screen_size[0]-p2_score_text.get_width()-20,20))
+        p1_score_text = self.font[18].render('Score '+str(self.players[0].score), True, (255, 255, 255))
+        p2_score_text = self.font[18].render('Score '+str(self.players[1].score), True, (255, 255, 255))
+        self.surface.blit(p1_score_text, (20, 20))
+        self.surface.blit(p2_score_text, (self.screen_size[0]-p2_score_text.get_width()-20, 20))
 
         if Setting.between_rounds_timer > 0:
             alpha = Setting.between_rounds_timer - int(Setting.between_rounds_timer)

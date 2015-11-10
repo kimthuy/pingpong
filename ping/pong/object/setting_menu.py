@@ -5,39 +5,34 @@ __all__ = ['SettingMenu']
 
 class SettingMenu(Menu):
     is_selected = False
-    is_check = False
-    SELECTED_COLOR = (255,255,255)
-    UNSELECT_COLOR = (128,255,0)
-    CHECKED_COLOR = (128,128,128)
+    is_check = True
+    CHECK_SELECT = (204,255,102)
+    CHECK_UNSELECT = (128,255,0)
+    UNCHECK_SELECT = (255,255,255)
+    UNCHECK_UNSELECT = (50, 50, 50)
 
     def selected(self):
         self.is_selected = True
-        color = self.SELECTED_COLOR
+        color = self.CHECK_SELECT if self.is_check else self.UNCHECK_SELECT
         self.update(color)
 
     def unselect(self):
         self.is_selected = False
-        color = self.CHECKED_COLOR if self.is_check else self.UNSELECT_COLOR
+        color = self.CHECK_UNSELECT if self.is_check else self.UNCHECK_UNSELECT
         self.update(color)
 
-    def check(self):
-        self.is_check = True
-        color = self.CHECKED_COLOR
-
-    def uncheck(self):
-        self.is_check = False
-        color = self.SELECTED_COLOR
-
     def init_view(self):
-        if self.is_selected:
-            color = self.SELECTED_COLOR
+        if self.is_selected and self.is_check:
+            color = self.CHECK_SELECT
+        elif self.is_selected and not self.is_check:
+            color = self.UNCHECK_SELECT
         elif self.is_check:
-            color = self.CHECKED_COLOR
+            color = self.CHECK_UNSELECT
         else:
-            color = self.UNSELECT_COLOR
+            color = self.UNCHECK_UNSELECT
         self.update(color)
 
     def toggle(self):
         self.is_check = not self.is_check
-        color = self.CHECKED_COLOR if self.is_check else self.SELECTED_COLOR
+        color = self.CHECK_SELECT if self.is_check else self.UNCHECK_SELECT
         self.update(color)
